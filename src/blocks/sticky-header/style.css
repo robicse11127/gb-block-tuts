@@ -1,0 +1,257 @@
+/* --------------------------------
+- Sticky Header Block.
+-------------------------------- */
+/* variables */
+:root {
+    /* colors */
+    --sy8-color-primary-hsl: 250, 84%, 54%;
+    --sy8-color-bg-hsl: 0, 0%, 100%;
+    --sy8-color-contrast-high-hsl: 230, 7%, 23%;
+    --sy8-color-contrast-higher-hsl: 230, 13%, 9%;
+    --sy8-color-accent-hsl: 342, 89%, 48%;
+    --sy8-color-contrast-lower-hsl: 240, 4%, 85%;
+
+    /* spacing */
+    --sy8-space-md: 1.25rem;
+    --sy8-space-xl: 3.25rem;
+    --sy8-space-sm: 0.75rem;
+    --sy8-space-xs: 0.5rem;
+
+    /* typography */
+    --sy8-text-sm: 0.833rem;
+}
+
+@media(min-width: 64rem){
+    :root {
+    /* spacing */
+    --sy8-space-md: 2rem;
+    --sy8-space-xl: 5.125rem;
+    --sy8-space-sm: 1.125rem;
+    --sy8-space-xs: 0.75rem;
+
+    /* typography */
+    --sy8-text-sm: 1rem;
+    }
+}
+
+/* component */
+.sticky-hero {
+    position: relative;
+    z-index: 1;
+}
+
+.sticky-hero__media {
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: -webkit-transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1), -webkit-transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+}
+
+.sticky-hero--overlay-layer .sticky-hero__media::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: hsl(var(--sy8-color-bg-hsl));
+    transition: opacity 1s;
+}
+
+.sticky-hero--media-is-fixed.sticky-hero--overlay-layer .sticky-hero__media::after {
+    opacity: 0.65;
+}
+
+.sticky-hero--media-is-fixed.sticky-hero--scale .sticky-hero__media {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+}
+
+.sticky-hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.sticky-hero__video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    display: block;
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto;
+    max-width: none;
+}
+
+.sticky-hero__content {
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+}
+
+/* utility classes */
+.sy8-text-component :where(h1, h2, h3, h4) {
+    line-height: var(--sy8-heading-line-height, 1.2);
+    margin-top: calc(var(--sy8-space-md) * var(--sy8-space-multiplier, 1));
+    margin-bottom: calc(var(--sy8-space-sm) * var(--sy8-space-multiplier, 1));
+}
+
+.sy8-text-component :where(p, blockquote, ul li, ol li) {
+    line-height: var(--sy8-body-line-height, 1.4);
+}
+
+.sy8-text-component :where(ul, ol, p, blockquote, .sy8-text-component__block) {
+    margin-bottom: calc(var(--sy8-space-sm) * var(--sy8-space-multiplier, 1));
+}
+
+.sy8-text-component :where(ul, ol) {
+    padding-left: 1.25em;
+}
+
+.sy8-text-component ul :where(ul, ol), .sy8-text-component ol :where(ul, ol) {
+    padding-left: 1em;
+    margin-bottom: 0;
+}
+
+.sy8-text-component ul {
+    list-style-type: disc;
+}
+
+.sy8-text-component ol {
+    list-style-type: decimal;
+}
+
+.sy8-text-component img {
+    display: block;
+    margin: 0 auto;
+}
+
+.sy8-text-component figcaption {
+    margin-top: calc(var(--sy8-space-xs) * var(--sy8-space-multiplier, 1));
+    font-size: var(--sy8-text-sm);
+    text-align: center;}
+
+.sy8-text-component em {
+    font-style: italic;
+}
+
+.sy8-text-component strong {
+    font-weight: bold;
+}
+
+.sy8-text-component s {
+    text-decoration: line-through;
+}
+
+.sy8-text-component u {
+    text-decoration: underline;
+}
+
+.sy8-text-component mark {
+    background-color: hsla(var(--sy8-color-accent-hsl), 0.2);
+    color: inherit;
+}
+
+.sy8-text-component blockquote {
+    padding-left: 1em;
+    border-left: 4px solid hsl(var(--sy8-color-contrast-lower-hsl));
+    font-style: italic;
+}
+
+.sy8-text-component hr {
+    margin: calc(var(--sy8-space-md) * var(--sy8-space-multiplier, 1)) auto;
+    background: hsl(var(--sy8-color-contrast-lower-hsl));
+    height: 1px;
+}
+
+.sy8-text-component > *:first-child {
+    margin-top: 0;
+}
+
+.sy8-text-component > *:last-child {
+    margin-bottom: 0;
+}
+
+.sy8-text-component.sy8-line-height-xs {
+    --sy8-heading-line-height: 1;
+    --sy8-body-line-height: 1.1;
+}
+
+.sy8-text-component.sy8-line-height-sm {
+    --sy8-heading-line-height: 1.1;
+    --sy8-body-line-height: 1.2;
+}
+
+.sy8-text-component.sy8-line-height-md {
+    --sy8-heading-line-height: 1.15;
+    --sy8-body-line-height: 1.4;
+}
+
+.sy8-text-component.sy8-line-height-lg {
+    --sy8-heading-line-height: 1.22;
+    --sy8-body-line-height: 1.58;
+}
+
+.sy8-text-component.sy8-line-height-xl {
+    --sy8-heading-line-height: 1.3;
+    --sy8-body-line-height: 1.72;
+}
+
+.sy8-article {
+    --sy8-heading-line-height: 1.22;
+    --sy8-body-line-height: 1.66;
+    --sy8-space-multiplier: 1.2;
+}
+
+.sy8-max-width-sm {
+    max-width: 48rem;
+}
+
+.sy8-container {
+    width: calc(100% - 2*var(--sy8-space-md));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sy8-margin-bottom-xl {
+    margin-bottom: var(--sy8-space-xl);
+}
+
+.sy8-text-center {
+    text-align: center;
+}
+
+.overlay::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}

@@ -1,2 +1,2 @@
-# gb-block-tuts
-A collection of Gutenberg Blocks
+# wp-gutenberg-block-starter
+A boilerplate to get started with WordPress Plugin Development

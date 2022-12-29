@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "prefix-blocks/sticky-header",
+  "version": "0.1.0",
+  "title": "Sticky Header",
+  "category": "prefix-blocks",
+  "icon": "smiley",
+  "description": "Sticky header block.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "headerContent": {
+      "type": "string",
+      "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+    },
+    "image": {
+      "type": "string",
+      "default": ""
+    },
+    "footerContent": {
+      "type": "string",
+      "default": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+    },
+    "overlay": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "textdomain": "gb-block-tuts",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
