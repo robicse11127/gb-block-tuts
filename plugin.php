@@ -55,19 +55,14 @@ final class WP_Your_Class_Name {
      */
     public function enqueue_scripts() {
         add_action( 'enqueue_block_editor_assets', [ $this, 'register_block_editor_assets' ] );
-        add_action( 'admin_enqueue_scritps', [ $this, 'register_admin_scripts' ] );
-        add_action( 'wp_enqueue_scritps', [ $this, 'register_public_scripts' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'register_admin_scripts' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'register_public_scripts' ] );
     }
 
     /**
      * Regsiter Block Editor Assets
      */
-    public function register_block_editor_assets() {}
-
-    /**
-     * Register Admin Scritps
-     */
-    public function register_admin_scripts() {
+    public function register_block_editor_assets() {
         wp_enqueue_script(
             'prefix-editor',
             PREFIX_PLUGIN_URL . '/assets/js/editor.js',
@@ -83,6 +78,11 @@ final class WP_Your_Class_Name {
             'all'
         );
     }
+
+    /**
+     * Register Admin Scritps
+     */
+    public function register_admin_scripts() {}
 
     /**
      * Register Public Scritps
